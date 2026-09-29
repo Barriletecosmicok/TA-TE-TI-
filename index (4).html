@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ta-Te-Ti</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="juego">
+
+    <header class="encabezado">
+      <h1 class="titulo">Ta-Te-Ti</h1>
+      <p class="subtitulo">Tres fichas por jugador. Cuando están todas en el tablero, se mueven.</p>
+    </header>
+
+    <!-- Tablero: las líneas se dibujan con SVG y los puntos son botones -->
+    <section class="zona-tablero" aria-label="Tablero">
+      <div class="tablero" id="tablero">
+        <svg class="lineas" viewBox="0 0 300 300" aria-hidden="true">
+          <rect x="50" y="50" width="200" height="200" />
+          <line x1="150" y1="50" x2="150" y2="250" />
+          <line x1="50" y1="150" x2="250" y2="150" />
+          <line x1="50" y1="50" x2="250" y2="250" />
+          <line x1="250" y1="50" x2="50" y2="250" />
+          <line class="linea-ganadora" id="linea-ganadora" x1="0" y1="0" x2="0" y2="0" />
+        </svg>
+        <!-- Los 9 puntos se generan desde script.js -->
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="marcador" aria-label="Marcador">
+        <div class="jugador" id="panel-X">
+          <span class="ficha ficha-x ficha-chica" aria-hidden="true">X</span>
+          <div class="jugador-info">
+            <span class="jugador-nombre">Jugador X</span>
+            <span class="reserva" id="reserva-X" aria-label="Fichas por colocar"></span>
+          </div>
+          <span class="puntos" id="puntos-X">0</span>
+        </div>
+        <div class="jugador" id="panel-O">
+          <span class="ficha ficha-o ficha-chica" aria-hidden="true">O</span>
+          <div class="jugador-info">
+            <span class="jugador-nombre">Jugador O</span>
+            <span class="reserva" id="reserva-O" aria-label="Fichas por colocar"></span>
+          </div>
+          <span class="puntos" id="puntos-O">0</span>
+        </div>
+      </div>
+
+      <p class="estado" id="estado" aria-live="polite"></p>
+      <p class="aviso" id="aviso" aria-live="polite"></p>
+
+      <div class="acciones">
+        <button class="boton boton-principal" id="btn-nueva">Nueva partida</button>
+        <button class="boton" id="btn-marcador">Borrar marcador</button>
+      </div>
+
+      <details class="reglas">
+        <summary>Reglas del juego</summary>
+        <ol>
+          <li>Juegan 2 jugadores, cada uno con tres fichas: X u O.</li>
+          <li>Por turnos, cada jugador coloca una ficha en un punto vacío.</li>
+          <li>Cuando las seis fichas están en el tablero, se juega moviéndolas: en tu turno elegís una de tus fichas y la llevás a un punto vacío vecino, unido por una línea.</li>
+          <li>Gana quien consigue tres fichas propias en línea horizontal, vertical o diagonal.</li>
+        </ol>
+      </details>
+    </aside>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
